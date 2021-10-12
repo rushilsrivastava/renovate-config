@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>SimplifyJobs/renovate-config"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["renovate"],
+      "automerge": true,
+      "stabilityDays": 0
+    }
+  ]
+}
