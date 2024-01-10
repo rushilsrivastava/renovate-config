@@ -53,6 +53,14 @@
       }
     },
     {
+      "matchPackagePatterns": ["eslint"],
+      "groupName": "eslint"
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
       "matchPackagePatterns": ["^@types/", "^types-"],
       "automerge": true,
       "major": {
