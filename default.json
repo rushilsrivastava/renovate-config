@@ -9,6 +9,7 @@
     ":ignoreModulesAndTests",
     ":updateNotScheduled",
     ":autodetectPinVersions",
+    ":preserveSemverRanges",
     ":prConcurrentLimit20",
     "workarounds:all"
   ],
