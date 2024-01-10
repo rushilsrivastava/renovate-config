@@ -55,7 +55,7 @@
     },
     {
       "matchPackagePatterns": ["eslint"],
-      "groupName": "eslint"
+      "groupName": "eslint",
       "automerge": true,
       "major": {
         "automerge": false
