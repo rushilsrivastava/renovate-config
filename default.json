@@ -49,6 +49,7 @@
     {
       "matchDepTypes": ["devDependencies", "dev-dependencies"],
       "automerge": true,
+      "stabilityDays": 2,
       "major": {
         "automerge": false
       }
@@ -56,6 +57,7 @@
     {
       "matchPackagePatterns": ["eslint"],
       "groupName": "eslint",
+      "stabilityDays": 1,
       "automerge": true,
       "major": {
         "automerge": false
@@ -63,6 +65,7 @@
     },
     {
       "matchPackagePatterns": ["^@types/", "^types-"],
+      "stabilityDays": 0,
       "automerge": true,
       "major": {
         "automerge": false
