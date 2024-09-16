@@ -1,75 +1,119 @@
 {
-  "extends": [
-    ":separateMajorReleases",
-    ":ignoreUnstable",
-    ":combinePatchMinorReleases",
-    ":prImmediately",
-    "group:monorepos",
-    "group:recommended",
-    ":ignoreModulesAndTests",
-    ":updateNotScheduled",
-    ":autodetectPinVersions",
-    ":preserveSemverRanges",
-    ":prConcurrentLimit20",
-    "workarounds:all"
-  ],
-  "timezone": "America/Los_Angeles",
-  "schedule": [
-    "after 5pm every weekday",
-    "every weekend",
-    "before 9am every weekday"
-  ],
-  "semanticCommits": "enabled",
-  "semanticCommitType": ":arrow_up:",
-  "semanticCommitScope": null,
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "📁 Dependency Dashboard",
-  "dependencyDashboardLabels": ["type: dependencies", "type: maintenance"],
-  "labels": ["type: dependencies"],
-  "ignoreDeps": ["husky"],
-  "stabilityDays": 3,
-  "lockFileMaintenance": { "enabled": true, "automerge": true },
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["lockFileMaintenance"],
-      "addLabels": ["type: maintenance"]
-    },
-    {
-      "matchUpdateTypes": ["lockFileMaintenance", "pin"],
-      "semanticCommitType": ":pushpin:"
-    },
-    {
-      "matchUpdateTypes": ["rollback"],
-      "semanticCommitType": ":arrow_down:"
-    },
-    {
-      "matchUpdateTypes": ["digest", "bump"],
-      "semanticCommitType": ":bookmark:"
-    },
-    {
-      "matchDepTypes": ["devDependencies", "dev-dependencies"],
-      "automerge": true,
-      "stabilityDays": 2,
-      "major": {
-        "automerge": false
-      }
-    },
-    {
-      "matchPackagePatterns": ["eslint"],
-      "groupName": "eslint",
-      "stabilityDays": 1,
-      "automerge": true,
-      "major": {
-        "automerge": false
-      }
-    },
-    {
-      "matchPackagePatterns": ["^@types/", "^types-"],
-      "stabilityDays": 0,
-      "automerge": true,
-      "major": {
-        "automerge": false
-      }
-    }
-  ]
+    "extends": [
+        ":separateMajorReleases",
+        ":ignoreUnstable",
+        ":combinePatchMinorReleases",
+        ":prImmediately",
+        "group:monorepos",
+        "group:recommended",
+        ":ignoreModulesAndTests",
+        ":updateNotScheduled",
+        ":autodetectPinVersions",
+        ":prConcurrentLimit20",
+        "workarounds:all"
+    ],
+    "timezone": "America/Los_Angeles",
+    "schedule": [
+        "after 5pm every weekday",
+        "every weekend",
+        "before 9am every weekday"
+    ],
+    "semanticCommits": "enabled",
+    "semanticCommitType": ":arrow_up:",
+    "semanticCommitScope": null,
+    "dependencyDashboard": true,
+    "dependencyDashboardTitle": "📁 Dependency Dashboard",
+    "dependencyDashboardLabels": ["type: dependencies", "type: maintenance"],
+    "labels": ["type: dependencies"],
+    "ignoreDeps": ["husky"],
+    "stabilityDays": 2,
+    "prCreation": "not-pending",
+    "lockFileMaintenance": { "enabled": true, "automerge": true },
+    "packageRules": [
+        {
+            "matchUpdateTypes": ["lockFileMaintenance"],
+            "addLabels": ["type: maintenance"]
+        },
+        {
+            "matchUpdateTypes": ["lockFileMaintenance", "pin"],
+            "semanticCommitType": ":pushpin:"
+        },
+        {
+            "matchUpdateTypes": ["rollback"],
+            "semanticCommitType": ":arrow_down:"
+        },
+        {
+            "matchUpdateTypes": ["digest", "bump"],
+            "semanticCommitType": ":bookmark:"
+        },
+        {
+            "matchDepTypes": ["devDependencies", "dev-dependencies"],
+            "automerge": true,
+            "rangeStrategy": "replace",
+            "major": {
+                "automerge": false
+            }
+        },
+                {
+            "matchDepNames": ["pip"],
+            "automerge": true,
+            "stabilityDays": 0
+        },
+        {
+            "groupName": "psycopg dependencies",
+            "packageNames": ["psycopg2", "psycopg2-binary"],
+            "automerge": true,
+            "stabilityDays": 1,
+            "groupSlug": "psycopg"
+        },
+        {
+            "groupName": "linting dependencies",
+            "packageNames": ["ruff", "black", "mypy"],
+            "automerge": true,
+            "stabilityDays": 1,
+            "groupSlug": "linting"
+        },
+        {
+            "groupName": "pytest dependencies",
+            "packageNames": ["pytest", "pytest-cov", "pytest-xdist", "pytest-asyncio", "pytest-factoryboy", "factory-boy"],
+            "automerge": true,
+            "stabilityDays": 1,
+            "groupSlug": "pytest"
+        },
+        {
+            "groupName": "sentry dependency",
+            "packageNames": ["sentry-sdk"],
+            "automerge": true,
+            "stabilityDays": 2,
+            "groupSlug": "sentry-sdk"
+        },
+        {
+            "groupName": "pydantic dependencies",
+            "packageNames": ["pydantic", "pydantic-core", "pydantic-settings", "pydantic-extra-types"],
+            "groupSlug": "pydantic"
+        },
+        {
+            "groupName": "gcp/googleapis dependencies",
+            "packageNames": ["google-api-python-client", "google-cloud-tasks", "google-cloud-secret-manager", "google-cloud-storage", "google-cloud-datastore", "google-cloud-logging", "functions-framework", "google-auth", "google-api-core"],
+            "groupSlug": "google",
+            "automerge": true,
+            "stabilityDays": 5
+        },
+        {
+            "matchPackagePatterns": ["^@types/", "^types-"],
+            "stabilityDays": 0,
+            "automerge": true,
+            "major": {
+                "automerge": false
+            }
+        },
+        {
+            "matchPackagePatterns": ["python"],
+            "rangeStrategy": "replace"
+        },
+        {
+            "matchDepTypes": ["build-system.requires"],
+            "rangeStrategy": "replace"
+        }
+    ]
 }
